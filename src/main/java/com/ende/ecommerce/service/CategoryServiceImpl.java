@@ -1,8 +1,9 @@
 package com.ende.ecommerce.service;
 
 import com.ende.ecommerce.entity.Category;
+import com.ende.ecommerce.exception.EntityNotFoundException;
 import com.ende.ecommerce.repository.CategoryRepository;
-import jakarta.persistence.EntityNotFoundException;
+
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,7 @@ public class CategoryServiceImpl implements  CategoryService{
 
     @Override
     public Category getById(UUID id) {
-         Category  category= categoryRepository.findById(id).orElseThrow(() ->new EntityNotFoundException("Category not found"));
+         Category  category= categoryRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Category",id));
         return category;
     }
 
