@@ -6,6 +6,7 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -18,5 +19,10 @@ public class CategoryServiceImpl implements  CategoryService{
     public Category getById(UUID id) {
          Category  category= categoryRepository.findById(id).orElseThrow(() ->new EntityNotFoundException("Category not found"));
         return category;
+    }
+
+    @Override
+    public List<Category> getAll() {
+        return categoryRepository.findAll();
     }
 }

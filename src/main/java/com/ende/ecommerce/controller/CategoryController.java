@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -24,6 +25,13 @@ public class CategoryController {
         Category category =categoryService.getById(id);
         return  ResponseEntity.status(HttpStatus.OK).body(category);
     }
+
+    @GetMapping
+    public ResponseEntity<List<Category>> getAll(){
+        List<Category> categories = categoryService.getAll();
+        return ResponseEntity.status(HttpStatus.OK).body(categories);
+    }
+
 }
 
 
